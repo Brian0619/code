@@ -1,0 +1,23 @@
+// A Palindrome is a word or a phase that is written the same both forwards and backwards
+// example: race car
+// example: Madam, I'm Adam
+// We will ignore punctuation to determine if it is a Palindrome
+
+function isPalindrome(string){
+  // First: turn letters in the string to lower case so that there isn't any confusion when comparing lowercase letters and uppercase letters
+  string = string.toLowerCase();
+  // Second: turn the lower case string into an array of characters
+  var charactersArr = string.split('');
+  // Third: Make an array of characters that will be allowed in our string so we can reference it later on 
+  var validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  // Fourth: Strip out any character in our string that is not a letters
+  var lettersArr = [];
+  charactersArr.forEach(char => {
+    if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
+  });
+  // Fifth: Make new letter array back into a string and compare
+  if (lettersArr.join('') === lettersArr.reverse().join('')) return true;
+  else return false;
+}
+
+isPalindrome("Madam  I'm brian");
